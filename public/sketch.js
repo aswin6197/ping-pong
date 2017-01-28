@@ -1,7 +1,7 @@
 var socket;
 
 var p1 = new player(1350-60,600,38,40);
-var p2 = new player(10,10,87,83);
+var p2 = new player(10,10,65,68);
 
 function setup(){
     createCanvas(1350,660);
@@ -15,19 +15,32 @@ function playr(data) {
 }
 function draw(){
     clear();
-    fill(255);
 
     p1.display();
-    p1.move();
-
     p2.display();
-    p2.move();
-var data ={
-    x:p1.x,
-    y:p1.y
-};
-    socket.emit("msg",data);
-
     ball.display();
-    ball.check();
+
+    score();
+
+    p1.update();
+    p2.update();
+    ball.update();
+    
+    send();
+}
+function score() {
+    if(ball.x > width){
+        p2.score++;
+    }
+    else if(ball.x < 0){
+        p1.score++;
+    }
+}
+function send() {
+
+    var data ={
+        x:p1.x,
+        y:p1.y
+    };
+    socket.emit("msg",data);
 }

@@ -1,3 +1,4 @@
+
 var ball = {
     x : 100,
     y : 100,
@@ -9,8 +10,9 @@ var ball = {
         ellipse(this.x,this.y,this.d,this.d);
         this.x += this.sx;
         this.y += this.sy;
+        fill(255);
     },
-    check : function() {
+    update : function() {
         if(this.y == height || this.y == 0){
             this.sy = -1*this.sy;
         }
@@ -21,6 +23,7 @@ var ball = {
             this.sx = -1*this.sx;
         }
         if(this.x > width || this.x < 0){
+            console.log(this.x);
             this.x = 100;
             this.y = 100;
             this.sx = 5;
@@ -30,12 +33,13 @@ var ball = {
 
 }
 var player = function(x,y,up,down) {
+    this.score = 0;
     this.x = x;
     this.y = y;
     this.s = 10;
     this.width = 40;
     this.height = 100;
-    this.move = function() {
+    this.update = function() {
         if( keyIsDown(up)){
             this.y -= this.s;
         }
@@ -51,5 +55,9 @@ var player = function(x,y,up,down) {
     };
     this.display = function() {
         rect(this.x,this.y,this.width,this.height);
+        fill(0);
+        textSize(32);
+        text("score "+this.score, (3*x/4+100)%width, 30);
+        fill(255);
     }
 }
