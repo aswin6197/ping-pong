@@ -20,13 +20,14 @@ function draw(){
     p2.display();
     ball.display();
 
-    score();
+    score();//updates the score
 
     p1.update();
     p2.update();
     ball.update();
+
+    send();//sends data
     
-    send();
 }
 function score() {
     if(ball.x > width){

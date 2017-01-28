@@ -8,6 +8,18 @@
     <title> p5</title>
   </head>
   <body>
-
+<script> setInterval(function() {
+    if(ball.sx > 0)
+        ball.sx++;
+    else {
+        ball.sx--;
+    }
+    if(ball.sy > 0)
+        ball.sy++;
+    else {
+        ball.sy--;
+    }
+},5000);
+</script>
   </body>
 </html>

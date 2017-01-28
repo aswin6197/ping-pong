@@ -13,7 +13,7 @@ var ball = {
         fill(255);
     },
     update : function() {
-        if(this.y == height || this.y == 0){
+        if(this.y >= height || this.y <= 0){
             this.sy = -1*this.sy;
         }
         if (this.x+this.d/2 > p1.x && this.y > p1.y && this.y <  p1.y+p1.height) {
@@ -22,11 +22,16 @@ var ball = {
         if(this.x -this.d/2 < p2.x +p2.width && this.y > p2.y && this.y < p2.y + p2.height){
             this.sx = -1*this.sx;
         }
-        if(this.x > width || this.x < 0){
-            console.log(this.x);
+        if(this.x > width ){
             this.x = 100;
             this.y = 100;
             this.sx = 5;
+            this.sy = 5;
+        }
+        else if(this.x < 0){
+            this.x = 1300;
+            this.y = 100;
+            this.sx = -5;
             this.sy = 5;
         }
     }
