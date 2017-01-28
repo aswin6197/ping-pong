@@ -1,5 +1,5 @@
 var express = require('express');
-
+console.log("hello");
 var app = express();
 
 var server = app.listen(3000);
@@ -9,15 +9,13 @@ var socket = require("socket.io");
 var io = socket(server);
 
 io.sockets.on('connection',news);
-
 function news(socket) {
-    console.log(socket.id);
-    socket.on("mouse",mesg);
+        console.log(socket.id);
 
-    function mesg(data) {
+        socket.on("msg",msg);
 
-    //console.log(data);
-        socket.broadcast.emit("mouse",data); //send to all except the one that send the message
-        //io.sockets.emit //sends to all including the one that send the msg
-    }
+        function msg(data) {
+            
+            socket.broadcast.emit("msg",data);
+        }
 }
