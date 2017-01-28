@@ -1,0 +1,32 @@
+{
+  "name": "ping-pong",
+  "version": "1.0.0",
+  "description": "ping pong game hosted on a local server multiplayer game",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aswin6197/ping-pong.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "socket.io",
+    "js",
+    "p5"
+  ],
+  "author": "aswin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aswin6197/ping-pong/issues"
+  },
+  "homepage": "https://github.com/aswin6197/ping-pong#readme"
+}

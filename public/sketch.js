@@ -28,6 +28,6 @@ var data ={
 };
     socket.emit("msg",data);
 
-    //ball.display();
-    //ball.check();
+    ball.display();
+    ball.check();
 }
