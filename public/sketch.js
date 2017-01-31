@@ -22,9 +22,9 @@ function draw(){
 
     score();//updates the score
 
-    p1.update();
-    p2.update();
-    ball.update();
+    //p1.update()
+    //p2.update();
+    ball.update()
 
     send();//sends data
 

@@ -16,15 +16,15 @@ var ball = {
         if(this.y >= height || this.y <= 0){
             this.sy = -1*this.sy;
         }
-        if (this.x+this.d/2 > p1.x && this.y > p1.y && this.y <  p1.y+p1.height) {
+        else if (this.x+this.d/2 > p1.x && this.y > p1.y && this.y <  p1.y+p1.height) {
             this.sx = -1*this.sx;
-            speedUp();
+            this.incSpeed();
         }
-        if(this.x -this.d/2 < p2.x +p2.width && this.y > p2.y && this.y < p2.y + p2.height){
+        else if(this.x -this.d/2 < p2.x +p2.width && this.y > p2.y && this.y < p2.y + p2.height){
             this.sx = -1*this.sx;
-            speedUp();
+            this.incSpeed();
         }
-        if(this.x > width ){
+        else if(this.x > width ){
             this.x = 100;
             this.y = 100;
             this.sx = 5;
@@ -36,19 +36,18 @@ var ball = {
             this.sx = -5;
             this.sy = 5;
         }
-    }
-}
-
-function speedUp() {
-    if(ball.sx > 0)
-        ball.sx++;
-    else {
-        ball.sx--;
-    }
-    if(ball.sy > 0)
-        ball.sy++;
-    else {
-        ball.sy--;
+    },
+    incSpeed : function() {
+        if(this.sx > 0)
+            this.sx++;
+        else {
+            this.sx--;
+        }
+        if(this.sy > 0)
+            this.sy++;
+        else {
+            this.sy--;
+        }
     }
 }
 
@@ -79,5 +78,6 @@ var player = function(x,y,up,down) {
         textSize(32);
         text("score "+this.score, (3*x/4+100)%width, 30);
         fill(255);
+        this.update();
     }
 }
