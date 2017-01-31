@@ -18,9 +18,11 @@ var ball = {
         }
         if (this.x+this.d/2 > p1.x && this.y > p1.y && this.y <  p1.y+p1.height) {
             this.sx = -1*this.sx;
+            speedUp();
         }
         if(this.x -this.d/2 < p2.x +p2.width && this.y > p2.y && this.y < p2.y + p2.height){
             this.sx = -1*this.sx;
+            speedUp();
         }
         if(this.x > width ){
             this.x = 100;
@@ -35,8 +37,21 @@ var ball = {
             this.sy = 5;
         }
     }
-
 }
+
+function speedUp() {
+    if(ball.sx > 0)
+        ball.sx++;
+    else {
+        ball.sx--;
+    }
+    if(ball.sy > 0)
+        ball.sy++;
+    else {
+        ball.sy--;
+    }
+}
+
 var player = function(x,y,up,down) {
     this.score = 0;
     this.x = x;
