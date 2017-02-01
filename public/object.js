@@ -3,8 +3,8 @@ var ball = {
     x : 100,
     y : 100,
     d : 40,
-    sx : 5,
-    sy : 5,
+    sx : 1,
+    sy : 1,
     display : function() {
         fill(0);
         ellipse(this.x,this.y,this.d,this.d);
@@ -18,11 +18,11 @@ var ball = {
         }
         else if (this.x+this.d/2 > p1.x && this.y > p1.y && this.y <  p1.y+p1.height) {
             this.sx = -1*this.sx;
-            this.incSpeed();
+            //this.incSpeed();
         }
         else if(this.x -this.d/2 < p2.x +p2.width && this.y > p2.y && this.y < p2.y + p2.height){
             this.sx = -1*this.sx;
-            this.incSpeed();
+            //this.incSpeed();
         }
         else if(this.x > width ){
             this.x = 100;
