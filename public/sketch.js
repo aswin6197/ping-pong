@@ -1,15 +1,18 @@
 var socket;
 
-var p1 = new player(1300-10,600,38,40);
-var p2 = new player(10,10,65,68);
+
 
 function setup(){
-    createCanvas(1350,660);
-    socket = io.connect("http://10.50.22.154:3000");//update to computers current ip address
+    var h = createCanvas(windowWidth,windowHeight);
+    h.position(0,0);
+    p1 = new player(width-60,height/2,38,40);
+    p2 = new player(10,height/2,65,68);
+
+    socket = io.connect("http://localhost:3000");//update to computers current ip address
     socket.on("msg",playr);
 }
 function playr(data) {
-    p2.x =  width-60 - data.x;
+    p2.x =  width -55- data.x;
     p2.y =  data.y;
     if(data.bx !== 0){
         ball.x = data.bx;
@@ -21,26 +24,23 @@ function playr(data) {
 function draw(){
     clear();
 
+    for(var i=0;i<height;i+=10){
+        line(width/2-7,i,width/2-7,i+5);
+    }
+
     p1.display();
     p2.display();
     ball.display();
 
-    score();//updates the score
+    ball.score();//updates the score
 
-    //p1.update()
-    //p2.update();
     ball.update()
 
     send();//sends data
 
 }
 function score() {
-    if(ball.x > width){
-        p2.score++;
-    }
-    else if(ball.x < 0){
-        p1.score++;
-    }
+
 }
 function send() {
 
@@ -50,7 +50,7 @@ function send() {
         bx:ball.x,
         by:ball.y,
         bsx:ball.sx,
-        bsy:ball.sy
+        bsy:ball.sy,
     };
     socket.emit("msg",data);
 }

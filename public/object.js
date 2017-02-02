@@ -25,13 +25,13 @@ var ball = {
             //this.incSpeed();
         }
         else if(this.x > width ){
-            this.x = 100;
+            this.x = width/2;
             this.y = 100;
             this.sx = 5;
             this.sy = 5;
         }
         else if(this.x < 0){
-            this.x = 1300;
+            this.x = width/2;
             this.y = 100;
             this.sx = -5;
             this.sy = 5;
@@ -47,6 +47,14 @@ var ball = {
             this.sy++;
         else {
             this.sy--;
+        }
+    },
+    score : function() {
+        if(this.x > width){
+            p2.score++;
+        }
+        else if(this.x < 0){
+            p1.score++;
         }
     }
 }
